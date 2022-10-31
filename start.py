@@ -164,19 +164,19 @@ def main_window():
             d = today.strftime("%b-%d-%Y")
 
             counter = 0
-            filename = ("attendance/"+d)
+            filename = (d)
 
-            if (os.path.exists(filename+".") == False):
+            if (os.path.exists("attendance/"+filename+".xlsx") == False):
                 filename = (filename)
             else:
-                while (os.path.exists(filename+"("+str(counter+1)+")"+".") == True):
+                while (os.path.exists("attendance/"+filename+"("+str(counter+1)+")"+".xlsx") == True):
                     counter += 1
                 filename = (filename+"("+str(counter+1)+")")
 
             # print("\nThe file name is : "+filename)
             p = "attendance/test.txt"
             os.makedirs(os.path.dirname(p), exist_ok=True)
-            f = xlsxwriter.Workbook(filename+'.xlsx')
+            f = xlsxwriter.Workbook("attendance/"+filename+'.xlsx')
             fob = f.add_worksheet()
             fob.write('A1', 'Name')
             fob.write('B1', 'Class & batch')
