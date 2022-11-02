@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "suyog",
+            "group": "suyogp",
+            "database": "${workspaceFolder:final}/resources/database.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
