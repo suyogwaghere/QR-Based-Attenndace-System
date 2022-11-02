@@ -26,7 +26,9 @@ year = tk.StringVar()
 branch = tk.StringVar()
 batch = tk.StringVar()
 lecture = tk.StringVar()
+
 roww = 1
+
 title = tk.Label(screen, text="ATTENDANCE SYSTEM", bd=10, relief=tk.GROOVE, font=(
                 "Sketch Rockwell", 35), bg="lavender", fg="black")
 title.pack(side=tk.TOP, fill=tk.X)
@@ -61,7 +63,9 @@ combo_search = ttk.Combobox(screen, textvariable=lecture, width=10, font=(
     "times new roman", 13), state='readonly')
 combo_search['values'] = ('1', '2', '3', '4', '5', '6', '7')
 combo_search.place(x=250, y=300)
+
 path = os.getcwd()
+
 def generate():
     filename = filedialog.askopenfilename(initialdir=path+"\resources", title="Select a File", filetypes=(
         ("Text files",  "*.txt*"), ("all files", "*.*")))
@@ -142,8 +146,8 @@ def enterData(z):
         # print(my_list)
         roww += 1
     return names
-
 print('Reading...')
+
 def checkData(data):
     # data=str(data)
     if data in names:
