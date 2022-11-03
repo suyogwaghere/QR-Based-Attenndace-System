@@ -432,9 +432,9 @@ def main_window():
                 code.insert(0, 'Password')
 
         code = Entry(frame, width=25, fg="black", border=0,
-                     bg='white', font=('Microsoft YaHei UI Light', 11))
+                     bg='white',show='', font=('Microsoft YaHei UI Light', 11))
         code.place(x=30, y=150)
-        code.insert(0, 'Password')
+        code.insert(0, 'Password        ')
         code.bind('<FocusIn>', on_enter)
         code.bind('<FocusOut>', on_leave)
         Frame(frame, width=295, height=2, bg='black').place(x=25, y=177)
@@ -450,24 +450,36 @@ def main_window():
                 conform_code.insert(0, 'Conform Password')
 
         conform_code = Entry(frame, width=25, fg="black", border=0,
-                             bg='white', font=('Microsoft YaHei UI Light', 11))
+                             bg='white',show='', font=('Microsoft YaHei UI Light', 11))
         conform_code.place(x=30, y=220)
         conform_code.insert(0, 'Conform Password')
         conform_code.bind('<FocusIn>', on_enter)
         conform_code.bind('<FocusOut>', on_leave)
         Frame(frame, width=295, height=2, bg='black').place(x=25, y=247)
-
+        #######################
+        c_v1=IntVar(value=0)
+        def my_show():
+            if(c_v1.get()==1):
+                code.config(show='') # display the chars 
+                conform_code.config(show='') # display the chars 
+            else:
+                code.config(show='*')# hide the chars using mask
+                conform_code.config(show='*')# hide the chars using mask
+        c1 = tk.Checkbutton(frame,text='Show Password',variable=c_v1,
+	    onvalue=1,offvalue=0,bg="white",font=('Microsoft YaHei UI Light', 11),command=my_show)
+        c1.select()
+        c1.place(x=20, y=255)
         #####################
         Button(frame, width=39, pady=7, text='Sign up', bg="#57a1f8",
-               fg='white', border=0, command=signup).place(x=35, y=300)
+               fg='white', border=0, command=signup).place(x=35, y=295)
         window.bind('<Return>', signupenter)
         label = Label(frame, text="I have an account?", fg='black',
                       bg='white', font=('Microsoft YaHei UI Light', 9))
-        label.place(x=90, y=340)
+        label.place(x=90, y=335)
 
         signin = Button(frame, width=6, text='Sign in', border=0,
                         bg='white', cursor='hand2', fg='#57a1f8', command=sign)
-        signin.place(x=200, y=340)
+        signin.place(x=200, y=335)
 
         window.mainloop()
 
@@ -513,17 +525,28 @@ def main_window():
             code.insert(0, 'Password')
 
     code = Entry(frame, width=25, fg="black", border=0,
-                 bg='white', font=('Microsoft YaHei UI Light', 11))
+                 bg='white',show='', font=('Microsoft YaHei UI Light', 11))
     code.place(x=30, y=150)
     code.insert(0, 'Password')
     code.bind('<FocusIn>', on_enter)
     code.bind('<FocusOut>', on_leave)
     Frame(frame, width=295, height=2, bg='black').place(x=25, y=177)
+    c_v1=IntVar(value=0)
+    def my_show():
+        if(c_v1.get()==1):
+            code.config(show='') # display the chars 
+        else:
+            code.config(show='*')# hide the chars using mask
+    c1 = tk.Checkbutton(frame,text='Show Password',variable=c_v1,
+	onvalue=1,offvalue=0,bg="white",font=('Microsoft YaHei UI Light', 11),command=my_show)
+    c1.select()
+    c1.place(x=20, y=185)
+    
 
     ########################################################################################################################
 
     Button(frame, width=39, pady=7, text='Sign in', bg="#57a1f8",
-           fg='white', border=0, command=signin).place(x=35, y=204)
+           fg='white', border=0, command=signin).place(x=35, y=220)
 
     window.bind('<Return>', signinn)
 
