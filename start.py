@@ -34,6 +34,7 @@ from pyzbar.pyzbar import ZBarSymbol
 import cv2
 import pyzbar.pyzbar as pyzbar
 from tkcalendar import DateEntry
+import base64
 ####################################################################################################
 
 splash_root = Tk()
@@ -71,8 +72,9 @@ def main_window():
         file.close()
         # print(r.keys())
         # print(r.values())
+        enc_password = base64.b64encode(password.encode("utf-8")).decode("utf-8")
 
-        if username in r.keys() and password == r[username]:
+        if username in r.keys() and enc_password == r[username]:
             window.destroy()
             screen = Tk()
             screen.title('Attendance System')
@@ -373,8 +375,8 @@ def main_window():
                     file = open('resources/datasheet.txt', 'r+')
                     d = file.read()
                     r = ast.literal_eval(d)
-
-                    dict2 = {username: password}
+                    enc_password = base64.b64encode(password.encode("utf-8")).decode("utf-8")
+                    dict2 = {username: enc_password}
                     r.update(dict2)
                     file.truncate(0)
                     file.close()

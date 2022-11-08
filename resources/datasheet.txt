@@ -1,1 +1,1 @@
-{'Username': 'password', 'asd': '123', 'suyog': '12345', 'admin': 'root', 'nikita': 'mast', 'shrinad': '1999'}
+{'Username': 'password', 'admin': 'cm9vdA=='}
