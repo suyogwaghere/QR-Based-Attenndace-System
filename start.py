@@ -222,7 +222,7 @@ def main_window():
                             # print(subject.get())
                             c.execute('CREATE TABLE IF NOT EXISTS ' + subject.get() +' (roll_no TEXT, in_time TEXT, branch TEXT, batch TEXT, year INTEGER, lecture INTEGER, subject TEXT, date NUMERIC)')  # SQL syntax
                             # print("Table "+subject.get()+" Created")
-                            c.execute('INSERT INTO ' + subject.get() + ' (roll_no , in_time , branch , batch , year , lecture , subject , date ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',(z, intime, branch.get(), batch.get(), year.get(), lecture.get(), subject.get(), datep))  # Insert record into database.
+                            c.execute(sq.escape_string('INSERT INTO ' + subject.get() + ' (roll_no , in_time , branch , batch , year , lecture , subject , date ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',(z, intime, branch.get(), batch.get(), year.get(), lecture.get(), subject.get(), datep)))  # Insert record into database.
                             con.commit()
                             print("You have Inserted a record")
                             # fob.write(z+'\t'+branch.get()+'-'+batch.get() +
@@ -258,7 +258,7 @@ def main_window():
             def generateQR():
                 path = os.getcwd()
                 filename = filedialog.askopenfilename(initialdir=path+"\resources", title="Select a File", filetypes=(
-                    ("Text files",  "*.txt*"), ("all files", "*.*")))
+                    ("Text files", "*.txt*"), ("all files", "*.*")))
                 # print(filename)
                 if(filename != ""):
                     f = open(filename, 'r')
@@ -292,7 +292,7 @@ def main_window():
                     dd = str(dt)
                     # c.execute('''SELECT * FROM ''' + subject.get())
                     # c.execute('''SELECT * FROM '''+ subject.get()+''' WHERE date = '''+dt)
-                    c.execute("""SELECT * FROM """+subject.get()+""" WHERE date = '"""+ dd +"""' """)
+                    c.execute(sq.escape_string("""SELECT * FROM """+subject.get()+""" WHERE date = '"""+ dd +"""' """))
                     #
                     data = c.fetchall()  # Gets the data from the table
                     for i in treev.get_children():
