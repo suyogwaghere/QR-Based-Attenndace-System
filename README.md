@@ -10,4 +10,5 @@ Prerequisites:
 
 4. cv2     - pip install opencv-python
 
-5. font 	- sketch-rockwell
+5. font 	- sketch-rockwell<br>
+[ [@suyogwaghere](https://github.com/suyogwaghere) ]
